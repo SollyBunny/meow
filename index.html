@@ -95,6 +95,15 @@
 					background-image: 
 					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23353841' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23ebeff4'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23d8dee5' /%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23848c8b'/%3E%3C/g%3E%3C/svg%3E%0A");
 				}
+			#page4 {
+				background-image: url("beds.webp");
+				color: #917d72;
+				box-shadow: 0 0 50px 5px #917d72 inset;
+			}
+				#page4 h3 {
+					background-image: 
+					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%236f3b36' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%234c8c84'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23aa6f5c'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23201922'/%3E%3C/g%3E%3C/svg%3E%0A");
+				}
 			.arrow {
 				position: fixed;
 				left: 50%;
@@ -168,6 +177,11 @@
 					<h3><div class="leftonhover"> CATS </div><div> LIKE </div><div class="rightonhover"> PLAY </div></h3>
 				</article>
 			</section>
+			<section class="page" id="page4">
+				<article>
+					<h3><div class="rightonhover"> CATS </div><div> LIKE </div><div class="leftonhover"> BEDS </div></h3>
+				</article>
+			</section>
 		</div>
 		<div class="arrow" id="arrowup" onclick="scrollReallyTry(-1);" style="opacity:0"><div></div></div>
 		<div class="arrow" id="arrowdown" onclick="scrollReallyTry(1);"><div></div></div>
@@ -182,9 +196,9 @@
 				const now = Date.now();
 				if (now - scrollTimestamp < 1000) return;
 				scrollPos += dir;
-				scrollPos = Math.max(0, Math.min(scrollPos, 3));
+				scrollPos = Math.max(0, Math.min(scrollPos, 4));
 				e_arrowup.style.opacity = scrollPos === 0 ? 0 : 1;
-				e_arrowdown.style.opacity = scrollPos === 3 ? 0 : 1;
+				e_arrowdown.style.opacity = scrollPos === 4 ? 0 : 1;
 				e_main.style.transform = `translateY(${scrollPos * -100}vh)`;
 				scrollTimestamp = now;
 			}

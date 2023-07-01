@@ -45,15 +45,11 @@ function catUpdate(src, cat) {
 		}
 		cat.animstate += 1;
 		cat.idle += 1;
-		if (cat.idle > 20) {
-			cat.anim = src.idle3;
-		} else if (cat.idle > 15) {
-			cat.anim = src.idle2;
-		} else if (cat.idle > 10) {
-			cat.anim = src.idle1;
-		} else if (cat.idle > 2) {
-			cat.anim = src.idle;
-		}
+		if      (cat.idle > 25) cat.anim = src.idle4;
+		else if (cat.idle > 20) cat.anim = src.idle3;
+		else if (cat.idle > 15) cat.anim = src.idle2;
+		else if (cat.idle > 10) cat.anim = src.idle1;
+		else if (cat.idle > 2)  cat.anim = src.idle;
 	}
 	cat.animstate %= cat.anim[1];
 	cat.style.backgroundPosition = `${cat.animstate * -src.tilew}px ${cat.anim[0] * -src.tileh}px`;
