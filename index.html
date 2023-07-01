@@ -147,6 +147,7 @@
 		<div id="main">
 			<section id="title">
 				<article>
+					<meowbed></meowbed>
 					<h1> Meow </h1>
 					<h2> An HTML cat cursor </h2>
 					<p> Move your cursor about! </p>
@@ -180,7 +181,6 @@
 			function scrollTry(dir) {
 				const now = Date.now();
 				if (now - scrollTimestamp < 1000) return;
-				console.log(now, scrollPos, dir)
 				scrollPos += dir;
 				scrollPos = Math.max(0, Math.min(scrollPos, 3));
 				e_arrowup.style.opacity = scrollPos === 0 ? 0 : 1;
@@ -202,6 +202,7 @@
 				}
 			}, { passive: true });
 			window.addEventListener("wheel", event => {
+				if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) return;
 				scrollReallyTry(Math.sign(event.deltaY));
 			}, { passive: true });
 		</script>

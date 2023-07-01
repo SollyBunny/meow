@@ -11,5 +11,9 @@ You can find the excessively overdesigned website [here](https://sollybunny.xyz/
 	```html
 	<script src="cat.js"></script>
 	```
-3. Enjoy having a cat on your screen
+3. Optionally, add a `<meowbed>` element to specify where the cat will spawn (multiple can be placed for the cat to spawn in a random one)
+	```html
+	<meowbed></meowbed>
+	```
+4. Enjoy having a cat on your screen!
 
