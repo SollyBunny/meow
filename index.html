@@ -11,11 +11,6 @@
 		<meta name="msapplication-TileColor" content="#a000ff">
 		<meta name="theme-color" content="#a000ff">
 		<link rel="preload" href="/assets/JetBrainsMono.woff2" as="font" type="font/woff" crossorigin="anonymous">
-		<link rel="preload" as="image" href="/assets/purple.webp">
-		<link rel="preload" as="image" href="/assets/orange.webp">
-		<link rel="preload" as="image" href="/assets/galaxy.webp">
-		<link rel="preload" href="/assets/global.css" as="style">
-		<link rel="stylesheet" href="/assets/global.css" type="text/css">
 		<style>
 			@font-face {
 				font-family: JetBrainsMono;
@@ -57,68 +52,71 @@
 				font-size: 15vmin;
 				font-weight: 900;
 			}
-			.page h3 {
-				text-align: center;
-				background-size: 110% auto;
-				background-position: center;
-				-webkit-background-clip: text;
-				background-clip: text;
-				transition: background-size 0.2s ease;
-				cursor: pointer;
+			.page {
+				contain: strict;
 			}
-				.page h3 > div {
-					transition: margin ease 0.5s;
-					color: transparent !important;
-					text-shadow: none !important;
+				.page h3 {
+					text-align: center;
+					background-size: 110% auto;
+					background-position: center;
+					-webkit-background-clip: text;
+					background-clip: text;
+					transition: background-size 0.2s ease;
+					cursor: pointer;
 				}
-				.page h3:hover {
-					background-size: 300% auto;
-				}
-					.page h3:hover .leftonhover {
-						margin-left: -50%;
+					.page h3 > div {
+						transition: margin ease 0.5s;
+						color: transparent !important;
+						text-shadow: none !important;
 					}
-					.page h3:hover .rightonhover {
-						margin-left: 50%;
+					.page h3:hover {
+						background-size: 300% auto;
 					}
-			#title {
-				background-image: radial-gradient(#333, #222);
-			}
-			#page1 {
-				background-image: url("yarn.webp");
+						.page h3:hover .leftonhover {
+							margin-left: -50%;
+						}
+						.page h3:hover .rightonhover {
+							margin-left: 50%;
+						}
+						#page1 {
+				background-image: url("assets/yarn.webp");
+				background-color: #778480;
 				color: #889591;
 				box-shadow: 0 0 50px 5px #889591 inset;
 			}
 				#page1 h3 {
-					background-image: 
-					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23114257' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23962f4c'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%2323cabe'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23d283a2'/%3E%3C/g%3E%3C/svg%3E%0A");
+					background-image: url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23114257' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23962f4c'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%2323cabe'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23d283a2'/%3E%3C/g%3E%3C/svg%3E%0A");
 				}
-			#page2 {
-				background-image: url("fish.webp");
-				color: #a0a4ac;
-				box-shadow: 0 0 50px 5px #a0a4ac inset;
+				#page2 {
+					background-image: url("assets/fish.webp");
+					background-color: #ba837a;
+					color: #a97269;
+					box-shadow: 0 0 50px 5px #ba837a inset;
+				}
+					#page2 h3 {
+						background-image: url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23cf9a96' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%2379766b'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%234b3127'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23bc5762'/%3E%3C/g%3E%3C/svg%3E%0A");
+					}
+				#page3 {
+					background-image: url("assets/play.webp");
+					background-color: #90939b;
+					color: #a0a4ac;
+					box-shadow: 0 0 50px 5px #a0a4ac inset;
+				}
+					#page3 h3 {
+						background-image: url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23353841' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23ebeff4'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23d8dee5' /%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23848c8b'/%3E%3C/g%3E%3C/svg%3E%0A");
+					}
+				#page4 {
+					background-image: url("assets/beds.webp");
+					background-color: #806c61;
+					color: #917d72;
+					box-shadow: 0 0 50px 5px #917d72 inset;
+				}
+					#page4 h3 {
+						background-image: url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%236f3b36' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%234c8c84'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23aa6f5c'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23201922'/%3E%3C/g%3E%3C/svg%3E%0A");
+					}
+			#title {
+				background-image: radial-gradient(#333, #222);
 			}
-				#page2 h3 {
-					background-image: 
-					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23cf9a96' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%2379766b'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%234b3127'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23bc5762'/%3E%3C/g%3E%3C/svg%3E%0A");
-				}
-			#page3 {
-				background-image: url("play.webp");
-				color: #a0a4ac;
-				box-shadow: 0 0 50px 5px #a0a4ac inset;
-			}
-				#page3 h3 {
-					background-image: 
-					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%23353841' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23ebeff4'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23d8dee5' /%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23848c8b'/%3E%3C/g%3E%3C/svg%3E%0A");
-				}
-			#page4 {
-				background-image: url("beds.webp");
-				color: #917d72;
-				box-shadow: 0 0 50px 5px #917d72 inset;
-			}
-				#page4 h3 {
-					background-image: 
-					url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%236f3b36' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%234c8c84'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23aa6f5c'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23201922'/%3E%3C/g%3E%3C/svg%3E%0A");
-				}
 			.arrow {
 				position: fixed;
 				left: 50%;
@@ -126,15 +124,9 @@
 				transition: opacity ease 0.5s, transform ease 0.5s;
 			}
 				@keyframes floatingUp {
-					0% {
-						transform: translateY(0);
-					}
-					50% {
-						transform: translateY(-20px);
-					}
-					100% {
-						transform: translateY(0);
-					}
+					0% { transform: translateY(0) }
+					50% { transform: translateY(-20px) }
+					100% { transform: translateY(0) }
 				}
 				.arrow div {
 					background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"><polyline data-name="Right" fill="none" id="Right-2" points="7 7.5 12 2.5 17 7.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="21.3" y2="4.8" /></svg>');

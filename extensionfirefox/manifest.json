@@ -1,0 +1,40 @@
+{
+	"name": "Meow",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "A cursor cat webtoy",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "meow@sollybunny.xyz"
+		},
+		"gecko_android": {
+			"id": "meow@sollybunny.xyz"
+		}
+	}
+	"icons": {
+		"16": "icon16.png",
+		"32": "icon32.png",
+		"64": "icon64.png",
+		"128": "icon128.png"
+	},
+	"browser_action": {
+		"default_icon": {
+			"16": "icon16.png",
+			"32": "icon32.png",
+			"64": "icon64.png",
+			"128": "icon128.png"
+		},
+		"default_title": "Disable Meow"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["cat.js"]
+		}
+	],
+	"web_accessible_resources": ["cat.png"],
+	"permissions": ["activeTab", "scripting"]
+}
