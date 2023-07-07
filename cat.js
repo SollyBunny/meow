@@ -9,14 +9,13 @@ window.addEventListener("mousemove", event => {
 }, { passive: true });
 
 function catUpdate(src, cat) {
+	console.log(cat.delay)
+	if (cat.timeoutid === undefined) return;
+	cat.timeoutid = undefined;
 	if (cat.hovered) {
-		if (cat.anim === src.tiltl || cat.anim === src.tiltr) {
-			cat.animstate = 0;
-		} else {
-			cat.animstate = 0;
+		if (cat.anim !== src.tiltl && cat.anim !== src.titlr)
 			cat.anim = Math.random() > 0.5 ? src.tiltl : src.tiltr;
-		}
-		cat.idle = 4;
+		cat.delay = 500;
 	} else {
 		const rect = cat.getBoundingClientRect();
 		const dx = rect.x + src.tilew / 2 - x;
@@ -25,14 +24,19 @@ function catUpdate(src, cat) {
 			dx ** 2 +
 			dy ** 2
 		) ** 0.5;
-		if (dis > 100) cat.style.transition = `left ${dis / 150}s linear, top ${dis / 150}s linear`;
-		else           cat.style.transition = `left ${dis / 100}s linear, top ${dis / 100}s linear`;
-		if (dis > 15) {
+		if (dis > 50) {
+			// Find anim / waking speed
+			const delay = dis > 300 ? 200 : 100;
+			cat.style.transition = `left ${dis / delay}s linear, top ${dis / delay}s linear`;
+			cat.delay = delay;
+			// Find direction 0 = N, 7 = S
 			let dir = Math.atan2(dy, dx) / (Math.PI * 2) * 8 - 2;
 			if (dir < 0) dir += 8;
 			dir = Math.round(dir) % 8;
-			cat.anim = (dir > 100 ? src.run : src.walk)[dir];
+			// Set anim
+			cat.anim = (dis > 250 ? src.run : src.walk)[dir];
 			cat.idle = 0;
+			// Set target position
 			let newx = x + Math.round(Math.random() * 50 - 25);
 			let newy = y + Math.round(Math.random() * 50 - 10);
 			if (newx < src.tileh * 1.5) newx = src.tileh * 1.5;
@@ -41,17 +45,21 @@ function catUpdate(src, cat) {
 			else if (newy > window.innerHeight - src.tilew * 1.5) newy = window.innerHeight - src.tilew * 1.5;
 			cat.style.left = `${newx}px`;
 			cat.style.top = `${newy}px`;
+		} else {
+			cat.style.left = `${rect.x + src.tilew / 2}px`;
+			cat.style.top = `${rect.y + src.tileh}px`;
+			if      (cat.idle > 25) { cat.anim = src.idle4; cat.delay = 600; }
+			else if (cat.idle > 20) { cat.anim = src.idle3; cat.delay = 550; }
+			else if (cat.idle > 15) { cat.anim = src.idle2; cat.delay = 500; }
+			else if (cat.idle > 10) { cat.anim = src.idle1; cat.delay = 400; }
+			else if (cat.idle > 2)  { cat.anim = src.idle ; cat.delay = 300; }
 		}
 		cat.animstate += 1;
 		cat.idle += 1;
-		if      (cat.idle > 25) cat.anim = src.idle4;
-		else if (cat.idle > 20) cat.anim = src.idle3;
-		else if (cat.idle > 15) cat.anim = src.idle2;
-		else if (cat.idle > 10) cat.anim = src.idle1;
-		else if (cat.idle > 2)  cat.anim = src.idle;
 	}
 	cat.animstate %= cat.anim[1];
 	cat.style.backgroundPosition = `${cat.animstate * -src.tilew}px ${cat.anim[0] * -src.tileh}px`;
+	if (!cat.timeoutid) cat.timeoutid = setTimeout(catUpdate.bind(undefined, src, cat), cat.delay);
 }
 
 function catHover(event) {
@@ -90,6 +98,7 @@ function catAdd(src) {
 	cat.animstate = 0;
 	cat.idle = 0;
 	cat.state = cat.anim[0];
+	cat.delay = 100;
 
 	cat.style.marginLeft = `-${src.tilew / 2}px`;
 	cat.style.marginTop = `-${src.tileh}px`;
@@ -112,17 +121,15 @@ function catAdd(src) {
 
 	cat.src = src;
 	document.body.appendChild(cat);
+	cat.timeoutid = 0;
 	catUpdate(src, cat);
-	cat.inetervalid = setInterval(catUpdate.bind(undefined, src, cat), 1000);
-
 }
 
 let src;
-if (browser && browser.runtime) {
+if (window.browser && browser.runtime)
 	src = browser.runtime.getURL("cat.png");
-} else {
+else
 	src = document.body.getAttribute("meowsrc") || "cat.png";
-}
 
 const meowfunc = catAdd.bind(undefined, {
 	path: src,
@@ -158,7 +165,8 @@ const meowfunc = catAdd.bind(undefined, {
 const meowdelallfunc = function () {
 	const cats = Object.values(document.getElementsByTagName("meow"));
 	for (let i = 0; i < cats.length; ++i) {
-		clearInterval(cats[i].inetervalid);
+		clearTimeout(cats[i].timeoutid);
+		cats[i] = timeoutid = undefined;
 		document.body.removeChild(cats[i]);
 	}
 }
